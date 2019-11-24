@@ -1,5 +1,6 @@
 package com.data.weatherHistory;
 
+import java.io.File;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,7 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 public class WeatherHistoryCollection {
 
-  private static final String CSV_FILE_PATH = "src\\eng-climate-summary.csv";
+  private static final String CSV_FILE_PATH = "src"+ File.separator + "eng-climate-summary.csv";
 
   @Bean
   @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)

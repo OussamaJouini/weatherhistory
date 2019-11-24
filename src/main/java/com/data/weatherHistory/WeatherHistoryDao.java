@@ -2,6 +2,7 @@ package com.data.weatherHistory;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.annotation.Resource;
 
@@ -20,8 +21,20 @@ public class WeatherHistoryDao implements Dao<WeatherHistory> {
 
   @Override
   public ArrayList<WeatherHistory> filter(Date minRange, Date maxRange) {
-    // TODO Auto-generated method stub
-    return null;
+    long minTime = minRange.getTime();
+    long maxTime = maxRange.getTime();
+
+    ArrayList<WeatherHistory> filteredList = new ArrayList<>();
+
+    Iterator<WeatherHistory> iterator = weatherHistoryCollection.iterator();
+    while(iterator.hasNext()) {
+      WeatherHistory weatherHistory = iterator.next();
+      if(weatherHistory.getDate().getTime() >= minRange.getTime() && 
+        weatherHistory.getDate().getTime() <= maxRange.getTime()) {
+          filteredList.add(weatherHistory);
+      }
+    }
+    return filteredList;
   }
 
   @Override

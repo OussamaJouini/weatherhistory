@@ -21,11 +21,11 @@
           <dd class="col-sm-9" th:text="${{weatherHistory.date}}"></dd>
   
           <dt class="col-sm-3">Mean_Temp</dt>
-          <dd class="col-sm-9" th:text="${weatherHistory.meanTemp}"></dd>
+          <dd class="col-sm-9" th:text="${weatherHistory.meanTemp} != null ? ${weatherHistory.meanTemp} : 'N/A'"></dd>
           <dt class="col-sm-3">Highest_Monthly_Max_Temp</dt>
-          <dd class="col-sm-9" th:text="${weatherHistory.highestMonthlyMaxTemp}"></dd>
+          <dd class="col-sm-9" th:text="${weatherHistory.highestMonthlyMaxTemp} != null ? ${weatherHistory.highestMonthlyMaxTemp} : 'N/A'"></dd>
           <dt class="col-sm-3">Lowest_Monthly_Min_Temp</dt>
-          <dd class="col-sm-9" th:text="${weatherHistory.lowestMonthlyMinTemp}"></dd>
+          <dd class="col-sm-9" th:text="${weatherHistory.lowestMonthlyMinTemp} != null ? ${weatherHistory.lowestMonthlyMinTemp} : 'N/A'"></dd>
         </dl>
       </div>
       

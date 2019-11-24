@@ -1,5 +1,7 @@
 package com.data.weatherHistory;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +16,14 @@ public class WeatherHistoryController {
   private WeatherHistoryService WeatherHistoryService;
 
   @GetMapping("/weatherHistory")
-  public String weatherHistory(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-    model.addAttribute("weatherHistories", WeatherHistoryService.getAll());
+  public String weatherHistory(@RequestParam(name="startTime", required=false) String startTime, @RequestParam(name="endTime", required=false) String endTime, Model model) {
+    ArrayList<WeatherHistory> weatherHistoryList = new ArrayList<WeatherHistory>();
+    if (startTime != null && endTime != null) {
+      weatherHistoryList = WeatherHistoryService.filter(startTime, endTime);
+    } else {
+      weatherHistoryList = WeatherHistoryService.getAll();
+    }
+    model.addAttribute("weatherHistories", weatherHistoryList);
     return "weather-history-page";
   }
 
@@ -29,7 +37,4 @@ public class WeatherHistoryController {
       return "error";
     }
   }
-
-
-
 }

@@ -10,6 +10,31 @@
           <li class="breadcrumb-item active" aria-current="page">Weather History List</li>
         </ol>
       </nav>
+
+   
+      <form th:action="@{/weatherHistory}" method="GET">
+        <div class="form-row">
+          <div class="col-3">
+            <div class="input-group date" data-provide="datepicker">
+              <input type="text" class="form-control" name="startTime" placeholder="Start Date" />
+              <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="input-group date" data-provide="datepicker">
+              <input type="text" class="form-control" name="endTime" placeholder="End Date">
+              <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Filter</button>
+          </div>
+        </div>
+      </form>
       <table class="table table-striped table-hover">
         <thead>
           <tr>
@@ -24,8 +49,8 @@
           </tr>
           <tr th:each="weatherHistory : ${weatherHistories}">
             <th scope="row"><span th:text="${weatherHistory.stationName}">Station_Name</span></th>
-            <td><span th:text="${weatherHistory.date}">Date</span></td>
-            <td><a th:href="@{'/weatherHistory/' + ${weatherHistoryStat.index}}" th:text="${weatherHistory.meanTemp}">Mean_Temp</span></td>
+            <td><span th:text="${{weatherHistory.date}}">Date</span></td>
+            <td><a th:href="@{'/weatherHistory/' + ${weatherHistoryStat.index}}" th:text="${weatherHistory.meanTemp} != null ? ${weatherHistory.meanTemp} : 'N/A'">Mean_Temp</span></td>
           </tr>
         </tbody>
       </table>

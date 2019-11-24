@@ -23,6 +23,7 @@ dependencies {
   
   compile "org.springframework.boot:spring-boot-devtools"
   compile "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect"
+	
 }
 
 test {
