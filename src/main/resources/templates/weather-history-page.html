@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="layouts/default">
+  <body>
+    <div id="page" layout:fragment="content">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Weather History List</li>
+        </ol>
+      </nav>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Station_Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Mean_Temp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:if="${weatherHistories == null || weatherHistories.isEmpty()}">
+            <td colspan="3"> No Weather History Records </td>
+          </tr>
+          <tr th:each="weatherHistory : ${weatherHistories}">
+            <th scope="row"><span th:text="${weatherHistory.stationName}">Station_Name</span></th>
+            <td><span th:text="${weatherHistory.date}">Date</span></td>
+            <td><a th:href="@{'/weatherHistory/' + ${weatherHistoryStat.index}}" th:text="${weatherHistory.meanTemp}">Mean_Temp</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

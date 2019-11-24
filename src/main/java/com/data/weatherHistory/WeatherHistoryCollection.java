@@ -4,7 +4,6 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -34,12 +33,7 @@ public class WeatherHistoryCollection {
         .withSkipLines(1)
         .withIgnoreLeadingWhiteSpace(true)
         .build();
-        Iterator<WeatherHistory> csvWeatherIterator = csvToBean.iterator();
-        while (csvWeatherIterator.hasNext()) {
-          WeatherHistory weatherHistory = csvWeatherIterator.next();
-          System.out.println("Name : " + weatherHistory.getStationName());
-          System.out.println("==========================");
-      }
+
       return (ArrayList<WeatherHistory>)csvToBean.parse();
     } catch(Exception e) {
       e.printStackTrace();

@@ -1,1 +1,34 @@
-<p>Hello There</p>
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="layouts/default">
+  <body>
+    <div id="page" layout:fragment="content">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a th:href="@{/weatherHistory}">Weather History List</a></li>
+          <li class="breadcrumb-item active" aria-current="page" th:text="${weatherHistory.stationName}"></li>
+        </ol>
+      </nav>
+      <div class="container">
+        <h2 th:text=${weatherHistory.stationName}></h2>
+        <dl class="row">
+          <dt class="col-sm-3">Province</dt>
+          <dd class="col-sm-9" th:text="${weatherHistory.province}"></dd>
+  
+          <dt class="col-sm-3">Date</dt>
+          <dd class="col-sm-9" th:text="${{weatherHistory.date}}"></dd>
+  
+          <dt class="col-sm-3">Mean_Temp</dt>
+          <dd class="col-sm-9" th:text="${weatherHistory.meanTemp}"></dd>
+          <dt class="col-sm-3">Highest_Monthly_Max_Temp</dt>
+          <dd class="col-sm-9" th:text="${weatherHistory.highestMonthlyMaxTemp}"></dd>
+          <dt class="col-sm-3">Lowest_Monthly_Min_Temp</dt>
+          <dd class="col-sm-9" th:text="${weatherHistory.lowestMonthlyMinTemp}"></dd>
+        </dl>
+      </div>
+      
+    </div>
+  </body>
+</html>

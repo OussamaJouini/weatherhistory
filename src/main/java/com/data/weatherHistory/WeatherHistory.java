@@ -5,6 +5,8 @@ import java.util.Date;
 import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 
  */
@@ -45,6 +47,7 @@ public class WeatherHistory {
     this.province = province;
   }
 
+  @DateTimeFormat(pattern="dd-MMM-YYYY")
   public Date getDate() {
     return this.date;
   }

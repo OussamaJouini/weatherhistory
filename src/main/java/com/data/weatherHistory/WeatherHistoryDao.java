@@ -1,9 +1,7 @@
 package com.data.weatherHistory;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -13,17 +11,24 @@ import org.springframework.stereotype.Component;
 public class WeatherHistoryDao implements Dao<WeatherHistory> {
 
   @Resource(name = "sessionScopedWeatherHistory")
-  private List<WeatherHistory> weatherHistoryList = new ArrayList<>();
+  private ArrayList<WeatherHistory> weatherHistoryCollection;
+
   @Override
-  public Collection<WeatherHistory> getAll() {
-    
+  public ArrayList<WeatherHistory> getAll() {
+    return weatherHistoryCollection;
+  }
+
+  @Override
+  public ArrayList<WeatherHistory> filter(Date minRange, Date maxRange) {
+    // TODO Auto-generated method stub
     return null;
   }
 
   @Override
-  public Collection<WeatherHistory> filter(Date minRange, Date maxRange) {
-    // TODO Auto-generated method stub
-    return null;
+  public WeatherHistory get(Integer index) {
+    return weatherHistoryCollection.get(index);
   }
+
+  
   
 }
