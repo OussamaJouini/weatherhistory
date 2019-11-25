@@ -17,7 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 public class WeatherHistoryCollection {
 
-  private static final String CSV_FILE_PATH = "src"+ File.separator + "eng-climate-summary.csv";
+  private static final String CSV_FILE_PATH = "src"+ File.separator + "weather-data.csv";
 
   @Bean
   @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
