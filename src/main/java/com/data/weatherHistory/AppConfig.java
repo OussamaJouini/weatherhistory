@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configuration for the session scoped WeatherHistoryCollection 
+ */
 @Configuration
 public class AppConfig {
 

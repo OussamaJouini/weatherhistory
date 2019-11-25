@@ -9,7 +9,8 @@ import com.opencsv.bean.CsvCustomBindByPosition;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * 
+ * WeatherHistory
+ * CSVBindings are for OpenCsv to bind the fields with the appropriate columns in the CSV
  */
 public class WeatherHistory {
 

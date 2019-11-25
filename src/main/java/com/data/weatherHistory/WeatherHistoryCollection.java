@@ -15,6 +15,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.context.WebApplicationContext;
 
+/**
+ * Weather HistoryCollection uses OpenCSV to parse the weather history data csv file 
+ * using the CSVBindings on the WeatherHistor class to map the data
+ * The WeatherHistoryCollection has been scoped to the session, so the data should be available for the session
+ * with no need to reload from the file during every request
+ */
 public class WeatherHistoryCollection {
 
   private static final String CSV_FILE_PATH = "src"+ File.separator + "weather-data.csv";
@@ -38,9 +44,11 @@ public class WeatherHistoryCollection {
 
       ArrayList<WeatherHistory> weatherHistoryList = new ArrayList<>();
       Iterator<WeatherHistory> iterator = csvToBean.iterator();
+
+      // Because of how the retrieval of the individual item is being handled in the controller, the index 
+      // is set at the model level
       int index = 0;
       while(iterator.hasNext()) {
-
         WeatherHistory weatherHistory = iterator.next();
         weatherHistory.setIndex(index++);
         weatherHistoryList.add(weatherHistory);

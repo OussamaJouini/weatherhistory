@@ -10,6 +10,10 @@ import com.data.weatherHistory.util.DateUtil;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * WeatherHistoryDao
+ * The interaction with the session scoped collection is handled at this layer.
+ */
 @Component
 public class WeatherHistoryDao implements Dao<WeatherHistory> {
 
@@ -43,7 +47,4 @@ public class WeatherHistoryDao implements Dao<WeatherHistory> {
   public WeatherHistory get(Integer index) {
     return weatherHistoryCollection.get(index);
   }
-
-  
-  
 }

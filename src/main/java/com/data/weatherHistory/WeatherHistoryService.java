@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * WeatherHistoryService
+ */
 @Component(value = "weatherHistoryService")
 public class WeatherHistoryService {
   private static final Logger Log = LoggerFactory.getLogger(WeatherHistoryService.class);

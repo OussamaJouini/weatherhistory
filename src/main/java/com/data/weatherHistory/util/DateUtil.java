@@ -2,7 +2,17 @@ package com.data.weatherHistory.util;
 
 import java.util.Calendar;
 import java.util.Date;
+
+/**
+ * DateUtil - Helper methods for date manipulation
+ */
 public class DateUtil {
+  /**
+   * Sets the Date to the end of day, needed when filtering by max range date to 
+   * ensure that the it's the end of day
+   * @param date
+   * @return
+   */
   public static Date atEndOfDay(Date date) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(date);
@@ -13,6 +23,12 @@ public class DateUtil {
     return calendar.getTime();
   }
 
+  /**
+   * Sets the date to the start of day, needed when filtering by min range date to
+   * ensure that it's the beginning of the day
+   * @param date
+   * @return
+   */
   public static Date atStartOfDay(Date date) {
       Calendar calendar = Calendar.getInstance();
       calendar.setTime(date);

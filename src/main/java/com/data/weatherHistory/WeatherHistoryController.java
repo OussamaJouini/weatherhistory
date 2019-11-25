@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * WeatherHistoryController
+ */
 @Controller
 public class WeatherHistoryController {
   private static final Logger Log = LoggerFactory.getLogger(WeatherHistoryController.class);
@@ -30,7 +33,13 @@ public class WeatherHistoryController {
     model.addAttribute("weatherHistories", weatherHistoryList);
     return "weather-history-page";
   }
-
+  
+  /**
+   * 
+   * @param id
+   * @param model
+   * @return
+   */
   @GetMapping("/weatherHistory/{id}")
   public String weatherHistoryDetails(@PathVariable String id, Model model) {
     Log.info("GET /weatherHistory/:id");
