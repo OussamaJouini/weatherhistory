@@ -18,7 +18,7 @@ public class WeatherHistoryController {
   @GetMapping("/weatherHistory")
   public String weatherHistory(@RequestParam(name="startTime", required=false) String startTime, @RequestParam(name="endTime", required=false) String endTime, Model model) {
     ArrayList<WeatherHistory> weatherHistoryList = new ArrayList<WeatherHistory>();
-    if (startTime != null && endTime != null) {
+    if (startTime != null && startTime.length() > 0 && endTime != null && endTime.length() > 0) {
       weatherHistoryList = WeatherHistoryService.filter(startTime, endTime);
     } else {
       weatherHistoryList = WeatherHistoryService.getAll();
