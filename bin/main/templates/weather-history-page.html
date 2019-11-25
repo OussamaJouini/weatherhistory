@@ -50,7 +50,7 @@
           <tr th:each="weatherHistory : ${weatherHistories}">
             <th scope="row"><span th:text="${weatherHistory.stationName}">Station_Name</span></th>
             <td><span th:text="${{weatherHistory.date}}">Date</span></td>
-            <td><a th:href="@{'/weatherHistory/' + ${weatherHistoryStat.index}}" th:text="${weatherHistory.meanTemp} != null ? ${weatherHistory.meanTemp} : 'N/A'">Mean_Temp</span></td>
+            <td><a th:href="@{'/weatherHistory/' + ${weatherHistory.index}}" th:text="${weatherHistory.meanTemp} != null ? ${weatherHistory.meanTemp} : 'N/A'">Mean_Temp</span></td>
           </tr>
         </tbody>
       </table>

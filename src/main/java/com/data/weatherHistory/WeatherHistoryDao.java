@@ -6,6 +6,8 @@ import java.util.Iterator;
 
 import javax.annotation.Resource;
 
+import com.data.weatherHistory.util.DateUtil;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,16 +23,16 @@ public class WeatherHistoryDao implements Dao<WeatherHistory> {
 
   @Override
   public ArrayList<WeatherHistory> filter(Date minRange, Date maxRange) {
-    long minTime = minRange.getTime();
-    long maxTime = maxRange.getTime();
+    long minTime = DateUtil.atStartOfDay(minRange).getTime();
+    long maxTime = DateUtil.atEndOfDay(maxRange).getTime();
 
     ArrayList<WeatherHistory> filteredList = new ArrayList<>();
 
     Iterator<WeatherHistory> iterator = weatherHistoryCollection.iterator();
     while(iterator.hasNext()) {
       WeatherHistory weatherHistory = iterator.next();
-      if(weatherHistory.getDate().getTime() >= minRange.getTime() && 
-        weatherHistory.getDate().getTime() <= maxRange.getTime()) {
+      if(weatherHistory.getDate().getTime() >= minTime && 
+        weatherHistory.getDate().getTime() <= maxTime) {
           filteredList.add(weatherHistory);
       }
     }

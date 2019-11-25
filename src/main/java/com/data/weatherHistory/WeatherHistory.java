@@ -2,8 +2,9 @@ package com.data.weatherHistory;
 
 import java.util.Date;
 
+import com.data.weatherHistory.util.LocalDateConverter;
 import com.opencsv.bean.CsvBindByPosition;
-import com.opencsv.bean.CsvDate;
+import com.opencsv.bean.CsvCustomBindByPosition;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,14 +13,15 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class WeatherHistory {
 
+  private int index;
+
   @CsvBindByPosition(position = 0)
   private String stationName;
 
   @CsvBindByPosition(position = 1)
   private String province;
 
-  @CsvDate(value = "dd/MM/yyyy")
-  @CsvBindByPosition(position = 2)
+  @CsvCustomBindByPosition(position = 2, converter = LocalDateConverter.class)
   private Date date;
 
   @CsvBindByPosition(position = 3)
@@ -31,6 +33,13 @@ public class WeatherHistory {
   @CsvBindByPosition(position = 5)
   private Float lowestMonthlyMinTemp;
 
+  public int getIndex() {
+    return this.index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
+  }
   public String getStationName() {
     return this.stationName;
   }
